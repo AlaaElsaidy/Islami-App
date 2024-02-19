@@ -16,7 +16,7 @@ class Home_Screen extends StatefulWidget {
 
 class _Home_ScreenState extends State<Home_Screen> {
   int index = 0;
-  List<Widget> tabs = [RadioTab(), Sebha(), Ahadeth(), Quran(), Settings()];
+  List<Widget> tabs = [Quran(), Sebha(), Ahadeth(), RadioTab(), Settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _Home_ScreenState extends State<Home_Screen> {
             },
             items: [
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/radio.png")),
+                  icon: ImageIcon(AssetImage("assets/images/quran.png")),
                   label: ""),
               BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage("assets/images/sebha.png")),
@@ -52,7 +52,7 @@ class _Home_ScreenState extends State<Home_Screen> {
                   icon: ImageIcon(AssetImage("assets/images/ahadeth.png")),
                   label: ""),
               BottomNavigationBarItem(
-                  icon: ImageIcon(AssetImage("assets/images/quran.png")),
+                  icon: ImageIcon(AssetImage("assets/images/radio.png")),
                   label: ""),
               BottomNavigationBarItem(icon: Icon(Icons.settings), label: ""),
             ],
