@@ -1,10 +1,169 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/suraDetails.dart';
+import 'package:islami_app/suraModel.dart';
 
 class Quran extends StatelessWidget {
-  const Quran({super.key});
+  Quran({super.key});
+
+  List<String> suraNames = [
+    "الفاتحه",
+    "البقرة",
+    "آل عمران",
+    "النساء",
+    "المائدة",
+    "الأنعام",
+    "الأعراف",
+    "الأنفال",
+    "التوبة",
+    "يونس",
+    "هود",
+    "يوسف",
+    "الرعد",
+    "إبراهيم",
+    "الحجر",
+    "النحل",
+    "الإسراء",
+    "الكهف",
+    "مريم",
+    "طه",
+    "الأنبياء",
+    "الحج",
+    "المؤمنون",
+    "النّور",
+    "الفرقان",
+    "الشعراء",
+    "النّمل",
+    "القصص",
+    "العنكبوت",
+    "الرّوم",
+    "لقمان",
+    "السجدة",
+    "الأحزاب",
+    "سبأ",
+    "فاطر",
+    "يس",
+    "الصافات",
+    "ص",
+    "الزمر",
+    "غافر",
+    "فصّلت",
+    "الشورى",
+    "الزخرف",
+    "الدّخان",
+    "الجاثية",
+    "الأحقاف",
+    "محمد",
+    "الفتح",
+    "الحجرات",
+    "ق",
+    "الذاريات",
+    "الطور",
+    "النجم",
+    "القمر",
+    "الرحمن",
+    "الواقعة",
+    "الحديد",
+    "المجادلة",
+    "الحشر",
+    "الممتحنة",
+    "الصف",
+    "الجمعة",
+    "المنافقون",
+    "التغابن",
+    "الطلاق",
+    "التحريم",
+    "الملك",
+    "القلم",
+    "الحاقة",
+    "المعارج",
+    "نوح",
+    "الجن",
+    "المزّمّل",
+    "المدّثر",
+    "القيامة",
+    "الإنسان",
+    "المرسلات",
+    "النبأ",
+    "النازعات",
+    "عبس",
+    "التكوير",
+    "الإنفطار",
+    "المطفّفين",
+    "الإنشقاق",
+    "البروج",
+    "الطارق",
+    "الأعلى",
+    "الغاشية",
+    "الفجر",
+    "البلد",
+    "الشمس",
+    "الليل",
+    "الضحى",
+    "الشرح",
+    "التين",
+    "العلق",
+    "القدر",
+    "البينة",
+    "الزلزلة",
+    "العاديات",
+    "القارعة",
+    "التكاثر",
+    "العصر",
+    "الهمزة",
+    "الفيل",
+    "قريش",
+    "الماعون",
+    "الكوثر",
+    "الكافرون",
+    "النصر",
+    "المسد",
+    "الإخلاص",
+    "الفلق",
+    "الناس"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      // padding: EdgeInsets.all(10),
+      child: Center(
+        child: Column(
+          children: [
+            Image.asset("assets/images/quranTop.png"),
+            Divider(
+              color: Color(0xffB7935F),
+              thickness: 2,
+            ),
+            Text(
+              "Sura Name",
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            Divider(
+              color: Color(0xffB7935F),
+              thickness: 2,
+            ),
+            Expanded(
+              child: ListView.separated(
+                  itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, SuraDetails.routeName,
+                            arguments: SuraModel(
+                                index: index, Name: suraNames[index]));
+                      },
+                      child: Text(suraNames[index],
+                          style: Theme.of(context).textTheme.bodySmall,
+                          textAlign: TextAlign.center)),
+                  separatorBuilder: (context, index) => Divider(
+                        color: Color(0xffB7935F),
+                        thickness: 2,
+                        endIndent: 20,
+                        indent: 20,
+                      ),
+                  itemCount: suraNames.length),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -7,12 +7,17 @@ class MyThemeData {
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
+      elevation: 0,
       centerTitle: true,
       backgroundColor: Colors.transparent,
     ),
     textTheme: TextTheme(
       bodyLarge: GoogleFonts.elMessiri(
           color: blackColor, fontWeight: FontWeight.w700, fontSize: 30),
+      bodyMedium: GoogleFonts.elMessiri(
+          color: blackColor, fontWeight: FontWeight.w600, fontSize: 25),
+      bodySmall: GoogleFonts.elMessiri(
+          color: blackColor, fontWeight: FontWeight.w400, fontSize: 25),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: primaryColor,
