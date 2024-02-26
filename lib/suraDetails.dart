@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami_app/suraModel.dart';
+import 'package:islami_app/models/suraModel.dart';
 
 class SuraDetails extends StatefulWidget {
   const SuraDetails({super.key});
@@ -30,13 +30,19 @@ class _SuraDetailsState extends State<SuraDetails> {
         appBar: AppBar(
           title: Text(model.Name, style: Theme.of(context).textTheme.bodyLarge),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ListView.builder(
-            itemBuilder: (context, index) {
-              return Text(verses[index]);
-            },
-            itemCount: verses.length,
+        body: Center(
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30), color: Colors.white),
+            margin: EdgeInsets.all(23),
+            padding: EdgeInsets.all(15),
+            height: MediaQuery.of(context).size.height * 0.8,
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+                return Text(verses[index]);
+              },
+              itemCount: verses.length,
+            ),
           ),
         ),
       ),
