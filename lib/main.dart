@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/Home/ahadethDetails.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:islami_app/TabDetails/ahadethDetails.dart';
 import 'package:islami_app/Home/home_screen.dart';
 import 'package:islami_app/MyThemeData.dart';
-import 'package:islami_app/suraDetails.dart';
+import 'package:islami_app/Providers/myProvider.dart';
+import 'package:islami_app/TabDetails/suraDetails.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider<LangProvider>(
+      create: (context) {
+        return LangProvider();
+      },
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,7 +21,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<LangProvider>(context);
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale(provider.langCode),
       debugShowCheckedModeBanner: false,
       initialRoute: Home_Screen.routeName,
       routes: {
@@ -23,6 +35,7 @@ class MyApp extends StatelessWidget {
       },
       theme: MyThemeData.lightTheme,
       darkTheme: MyThemeData.darkTheme,
+      themeMode: provider.themeMode,
     );
   }
 }
