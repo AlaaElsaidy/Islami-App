@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/Providers/myProvider.dart';
 import 'package:islami_app/Tabs/ahadeth.dart';
 import 'package:islami_app/Tabs/quran.dart';
 import 'package:islami_app/Tabs/radio.dart';
 import 'package:islami_app/Tabs/sebha.dart';
 import 'package:islami_app/Tabs/settings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Home_Screen extends StatefulWidget {
   Home_Screen({super.key});
@@ -20,16 +23,17 @@ class _Home_ScreenState extends State<Home_Screen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<LangProvider>(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/images/bg3.png"),
+        image: AssetImage(provider.getBg()),
         fit: BoxFit.fill,
       )),
       child: Scaffold(
           appBar: AppBar(
             title: Text(
-              "Islami",
+              AppLocalizations.of(context)!.app_name,
               style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),

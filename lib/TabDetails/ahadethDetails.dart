@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:islami_app/Providers/myProvider.dart';
 import 'package:islami_app/models/ahadethModel.dart';
+import 'package:provider/provider.dart';
+
+import '../MyThemeData.dart';
 
 class AhadethDetails extends StatelessWidget {
   const AhadethDetails({super.key});
@@ -8,11 +12,12 @@ class AhadethDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var providerBG = Provider.of<LangProvider>(context);
     var data = ModalRoute.of(context)!.settings.arguments as AhadethModel;
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-        image: AssetImage("assets/images/bg3.png"),
+        image: AssetImage(providerBG.getBg()),
         fit: BoxFit.fill,
       )),
       child: Scaffold(
@@ -24,7 +29,9 @@ class AhadethDetails extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    color: Colors.white),
+                    color: providerBG.themeMode == ThemeMode.light
+                        ? Colors.white
+                        : MyThemeData.dark_primaryColor),
                 margin: EdgeInsets.all(23),
                 padding: EdgeInsets.all(15),
                 height: MediaQuery.of(context).size.height * 0.8,
